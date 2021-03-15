@@ -1,23 +1,19 @@
+import "./VideoCard.css";
 import React from "react";
 
-class VideoCard extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { spans: 0 };
-  }
-
-  render() {
-    return (
-      <div style={{ marginTop: "10px" }}>
-        <span className="video-card">
-          <img src={this.props.url} />
-        </span>
-        <span className="video-card">
-          <h2>{this.props.title}</h2>
-        </span>
+const VideoCard = ({ video, onVideoSelect }) => {
+  return (
+    <div onClick={() => onVideoSelect(video)} className="video-card item">
+      <img
+        alt={video.snippet.title}
+        className="ui image"
+        src={video.snippet.thumbnails.medium.url}
+      />
+      <div className="content">
+        <div className="header">{video.snippet.title}</div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
 export default VideoCard;
